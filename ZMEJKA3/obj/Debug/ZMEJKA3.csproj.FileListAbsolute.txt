@@ -1,0 +1,6 @@
+C:\Users\37255\Desktop\C#\ZMEJKA3\ZMEJKA3\bin\Debug\ZMEJKA3.exe.config
+C:\Users\37255\Desktop\C#\ZMEJKA3\ZMEJKA3\bin\Debug\ZMEJKA3.exe
+C:\Users\37255\Desktop\C#\ZMEJKA3\ZMEJKA3\bin\Debug\ZMEJKA3.pdb
+C:\Users\37255\Desktop\C#\ZMEJKA3\ZMEJKA3\obj\Debug\ZMEJKA3.csprojAssemblyReference.cache
+C:\Users\37255\Desktop\C#\ZMEJKA3\ZMEJKA3\obj\Debug\ZMEJKA3.exe
+C:\Users\37255\Desktop\C#\ZMEJKA3\ZMEJKA3\obj\Debug\ZMEJKA3.pdb
