@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Media;
 using System.Diagnostics;//Stopwatch
+using System.IO;
 
 namespace ZMEJKA3
 {
@@ -14,22 +15,28 @@ namespace ZMEJKA3
     {
         private static int counter2 = 0;
         private static int speed = 0;
-
         
 
         static void Main(string[] args)
         {
+            
+            
+            //var name = Console.ReadLine();
+            Name();
+
+
             Console.SetWindowSize(80, 25);//80,25 v uroke
+
             Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.Clear();
-            
+
             Walls walls = new Walls(80, 25);
             walls.Draw();
 
-            
+
 
             Music();
-            
+
             //otrisovka to4ek
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
@@ -43,7 +50,8 @@ namespace ZMEJKA3
             var sw = new Stopwatch();//sozdaem objekt klassa stopwatch
             sw.Start();//vizivaem metod Start, dlja vis4eta metoda ispolnenija
 
-
+           
+            
 
             while (true)
             {
@@ -75,6 +83,9 @@ namespace ZMEJKA3
 
             sw.Stop();
             Console.WriteLine($"\n\n\n\n\n\t\t\tTime spent: {sw.Elapsed}",Console.ForegroundColor=ConsoleColor.Red);
+            StreamWriter to_file = new StreamWriter("players.txt", true);
+            to_file.WriteLine($"time spent: {sw.Elapsed}");
+            to_file.Close();
             WriteGameOver();
             
             Console.ReadLine();
@@ -83,11 +94,38 @@ namespace ZMEJKA3
         }
 
 
-        
+        public static void Name()
+        {
+            Console.WriteLine("Enter your name: ");
+            var name = Console.ReadLine();
+            if(name==null || name==(" ") || name.Any(Char.IsDigit))
+                
+               // if (string.IsNullOrEmpty(name) || name.Any(Char.IsDigit))
+                  
+                {
+                    Console.WriteLine("try one more time");
+                    
+                    name = Console.ReadLine();
+
+                }
+            else
+            {
+
+                Console.WriteLine("let's save it");
+                StreamWriter to_file = new StreamWriter("players.txt", true);
+                to_file.WriteLine("Name: " + Convert.ToString(name));
+                to_file.Close();
+
+            }
+
+            Console.ReadLine();
+
+        }
         
 
-      
-       
+        
+
+
         static void Speed()
         {
             if (counter2 % 2 == 0)
@@ -128,6 +166,10 @@ namespace ZMEJKA3
             //WriteText("AUTOR: xxxxx", xOffset + 1, yOffset++);
             //WriteText(" NOT SIMPLE:)", xOffset + 5, yOffset++);
             //WriteText("\n\t\t\t============================", xOffset, yOffset++);
+            StreamWriter to_file = new StreamWriter("players.txt", true);
+            to_file.WriteLine("Ate food\t" + Convert.ToString(counter2)+"\n"+ "was displayed totaly food\t"+ Convert.ToString(FoodCreator.counter));
+            to_file.Close();
+
         }
         /*static void WriteText(String text, int xOffset, int yOffset)
         {
